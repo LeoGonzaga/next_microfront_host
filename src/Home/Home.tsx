@@ -6,7 +6,7 @@ const SampleComponent = dynamic(() => import("mf1/sidebar"), {
     loading({ error }) {
       if (error) {
         console.log(error)
-        return <p>That failed.</p>;
+        return <p>{JSON.stringify(error)}</p>;
       }
   
       return <p>Loading...</p>;

@@ -1,17 +1,22 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
   distDir: 'build',
+
+
   
   webpack: (config, options) => {
+    config.experiments = { topLevelAwait: true };
+    config.output.publicPath = "http://localhost:3001/_next/";
     config.plugins.push(
       new options.webpack.container.ModuleFederationPlugin({
         name:"mf3",
         remoteType: "var",
+        
         remotes: {
-            mf1: "mf1"
+            mf1: 'mf1'
         },
+       
         shared: [
           {
             react: {
